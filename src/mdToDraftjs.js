@@ -347,6 +347,12 @@ const parseMdLine = (line, existingEntities, extraStyles = {}) => {
         /^(?:[^:\/?#]+:)?(?:\/\/[^\/?#]*)?(?:([^?#]*\/)([^\/?#]*))?(\?[^#]*)?(?:#.*)?$/
       ) ?? [];
     const [, dir, fileName, query] = matchedFileName.map(match => match ?? '');
+    if (!fileName) {
+      return {
+        name: fileName,
+        ext: '',
+      };
+    }
 
     const matchedExt = fileName.match(/^(.+?)(\.[^.]+)?$/) ?? [];
     const [, name, ext] = matchedExt.map(match => match ?? '');
