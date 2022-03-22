@@ -17,8 +17,7 @@
     "compile": "rm -rf dist && mkdir dist && node build.js",
     "prepublish": "npm run compile",
     "precommit": "lint-staged",
-    "deploy-demo": "cd demo && yarn build && gh-pages -d build",
-    "postinstall": "npm run compile"
+    "deploy-demo": "cd demo && yarn build && gh-pages -d build"
   },
   "lint-staged": {
     "*.js": [
