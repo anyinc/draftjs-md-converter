@@ -241,7 +241,7 @@ const parseMdLine = (line, existingEntities, extraStyles = {}) => {
       mutability: 'IMMUTABLE',
       data: {
         src: child.url,
-        name: `${name}${ext}`,
+        name: child.alt || `${name}${ext}`,
       },
     };
     entityRanges.push({
@@ -259,7 +259,7 @@ const parseMdLine = (line, existingEntities, extraStyles = {}) => {
       mutability: 'IMMUTABLE',
       data: {
         src: child.url,
-        name: `${name}${ext}`,
+        name: child.alt || `${name}${ext}`,
       },
     };
     entityRanges.push({
