@@ -1,6 +1,7 @@
 'use strict';
 
 const parse = require('@textlint/markdown-to-ast').parse;
+const { JSDOM } = require('jsdom');
 
 const defaultInlineStyles = {
   Strong: {
@@ -395,8 +396,10 @@ const parseMdLine = (line, existingEntities, extraStyles = {}) => {
       });
     } else {
       if (child.type === 'Html') {
-        const d = new DOMParser();
-        const parsedHtml = d.parseFromString(child.value, 'text/html');
+        // const d = new DOMParser();
+        // const parsedHtml = d.parseFromString(child.value, 'text/html');
+        const d = new JSDOM(child.value);
+        const parsedHtml = d.window.document;
         let found = false;
         inlineHtmlStyles.forEach(htmlStyle => {
           const node = parsedHtml.querySelector(htmlStyle.node);
