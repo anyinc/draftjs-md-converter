@@ -379,6 +379,10 @@ const parseMdLine = (line, existingEntities, extraStyles = {}) => {
         addTable(child);
         text = ' ';
         return;
+      case 'HorizontalRule':
+        // MEMO: Qastで水平線対応していないため、文字そのままにする
+        text = `${text}${child.raw}`;
+        return;
       default:
     }
 
